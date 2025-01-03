@@ -50,7 +50,7 @@ const client = generateClient<Schema>();
     const listProfile=()=>{
       client.models.Profile.observeQuery().subscribe({
         next: (data_1) =>   data_1.items.length == 0?
-    setLayout(false): setLayout(true),
+    setLayout(true): setLayout(true),
       })
      
     }
