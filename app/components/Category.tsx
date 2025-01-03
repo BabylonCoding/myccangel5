@@ -35,7 +35,7 @@ const checkCategory=()=>{
         selectedKeys={selectedKeys}
         selectionMode="single"
         variant="flat"
-        onSelectionChange={setSelectedKeys}
+        onSelectionChange={()=>setSelectedKeys}
         
       >
         <DropdownItem key="Please select a category ↓">Please select a category ↓</DropdownItem>
