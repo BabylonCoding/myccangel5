@@ -117,13 +117,13 @@ export const Profilepage = () => {
     <button onClick={()=>{setprofileEiditForm(true)}}>Edit- 2320001</button>
 */}
 <S3UploadForm/>
+<div className="flex flex-col"  >
 <div className={`md:hidden   bg-opacity-80 bg-[#33265e]  rounded-lg overflow-hidden transition-all duration-1000 ${profileEiditForm? "h-600 p-4":"h-0"} `}>
 {profileEiditForm&&<Profileform/>}
 </div>
       <div >
       
-     
-      <VscEdit className='mr-2  [#ecd6fb] cursor-pointer  hover:text-gray-800  ' onClick={showEditForm}/>
+      <VscEdit className='mr-2 ml-20 [#ecd6fb] cursor-pointer  hover:text-gray-800  ' onClick={showEditForm}/>
 
       {
       profiles.map((profile) => (
@@ -144,7 +144,7 @@ export const Profilepage = () => {
   
        
       </div>
-      
+      </div>
     </main>
    
   );
