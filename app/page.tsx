@@ -58,7 +58,7 @@ const client = generateClient<Schema>();
       //userName!=""? listProfile():null;   
       listProfile();   
       console.log("userName") ;       console.log(userName) ;                 
-                
+      setLayout(false);       
       }, [userName]);
   
 /////////////////////////////////////////////

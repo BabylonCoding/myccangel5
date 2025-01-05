@@ -20,6 +20,7 @@ const schema = a.schema({
       address2: a.string(),
       city: a.string(),
       country: a.string(),
+      category: a.string(),
     })
     .authorization((allow) => [allow.owner()]),
 });
