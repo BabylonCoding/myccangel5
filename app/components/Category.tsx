@@ -54,7 +54,7 @@ else  if(cat1=="not IBD")
      
    }
    ///////////////////////////////////////////
-   function createProfile(Category:any) {
+  async function createProfile(Category:any) {
     client.models.Profile.create({
      // name: window.prompt("Name content"),
      name:"",
@@ -65,21 +65,27 @@ else  if(cat1=="not IBD")
      country:"",
      category: Category
     });
+
   }
 
-  const checkCategory=()=>{
+  const checkCategory=async ()=>{
       if(cat=="Select your category")
         setWarningMsg(true)
      else
      {
    //  alert("Here Save Category")  //createProfile("", "", "", "", "", "")
      if (cat=="I am IBD")
-    // alert("IBD") // 
-     createProfile( "IBD")
+    // // 
+{
+   await  createProfile( "IBD");
+   alert("Upload file") 
+}
        else if (cat=="I am not IBD")
+       {
   //   alert("NontIBD"); //
-         createProfile( "NontIBD")
- 
+    await     createProfile( "NontIBD");
+// Here go to non IBD Profile
+}
      }
  }
 
