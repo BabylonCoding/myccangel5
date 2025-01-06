@@ -8,11 +8,18 @@ const [file,setFile]=useState(null);
 const [uploading,setUploading]=useState(false);
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-/*
+
+
 
 async function uploadFileToS3(file, fileName) {
    // console.log( "Route");
-
+   const s3Client= new S3Client({
+    region:process.env.AWS_REGION,
+    credentials:{
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+    }
+})
     const fileBuffer= file;
     console.log(" S3 call");
 
@@ -28,7 +35,7 @@ async function uploadFileToS3(file, fileName) {
     const response1=await s3Client.send(command);
     return response1;
 }
-api */
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -55,14 +62,14 @@ const handleSubmit= async (e)=>{
         console.log( "try fetch");
         console.log(      formData);
 
-  //      const buffer = Buffer.from (await file.arrayBuffer());
-// const response2= await uploadFileToS3(buffer, file.name);
-
+       const buffer = Buffer.from (await file.arrayBuffer());
+const response2= await uploadFileToS3(buffer, file.name);
+/*
 const response=await fetch('api/s3-upload',{
     method: "POST",
     body: formData,
 })
-
+*/
 console.log( " response ");
 console.log( response);
 
@@ -84,7 +91,7 @@ setUploading(false);
 <form onSubmit={handleSubmit}>
 <input type="file" accept="image/*" onChange={handleFileChange}/>
 
-<button type="submit" className="bg-white" >
+<button type="submit" >
 {uploading? "Uploading...": "Upload"}
 
 </button>
