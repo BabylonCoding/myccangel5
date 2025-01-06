@@ -22,6 +22,8 @@ import "./../app.css";
 import { Amplify } from "aws-amplify";
 import outputs from "@/amplify_outputs.json";
 import "@aws-amplify/ui-react/styles.css";
+import { Profileform } from './Profileform';
+import S3UploadForm from './S3UploadForm';
 
 
 Amplify.configure(outputs);
@@ -32,6 +34,7 @@ const client = generateClient<Schema>();
 export default function App() {
     const [cat, setCat]= useState("Select your category");
     const [warningMsg, setWarningMsg]=useState(false);
+    const [comp, setComp]=useState("start");
 
  const closeMenue=(cat1: any)=> {
     // toggle();
@@ -55,7 +58,7 @@ else  if(cat1=="not IBD")
    }
    ///////////////////////////////////////////
   async function createProfile(Category:any) {
-    client.models.Profile.create({
+    const r=client.models.Profile.create({
      // name: window.prompt("Name content"),
      name:"",
      address1:"",
@@ -65,7 +68,7 @@ else  if(cat1=="not IBD")
      country:"",
      category: Category
     });
-
+    
   }
 
   const checkCategory=async ()=>{
@@ -78,12 +81,15 @@ else  if(cat1=="not IBD")
     // // 
 {
    await  createProfile( "IBD");
-   alert("Upload file") 
+   setComp("patent")
+  // alert("Upload file") 
 }
        else if (cat=="I am not IBD")
+      
        {
   //   alert("NontIBD"); //
     await     createProfile( "NontIBD");
+    setComp("partners")
 // Here go to non IBD Profile
 }
      }
@@ -91,6 +97,7 @@ else  if(cat1=="not IBD")
 
   return (
     <div className="flex w-screen h-screen bg-[#0b0326] justify-center items-center">
+     {comp=="start"&&
     <div className="flex flex-col justify-center items-center">
 
     
@@ -137,7 +144,11 @@ else  if(cat1=="not IBD")
               <div className="absolute inset-x-0  h-px -bottom-px bg-gradient-to-r w-3/4 mx-auto from-transparent via-yellow-300 to-transparent" />
             </button>
     
-    </div> </div>
+    </div> 
+}
+    {comp=="partners"&&  <Profileform/>}
+    {comp=="patent"&&  <S3UploadForm/>}
+    </div>
   );
 }
 
