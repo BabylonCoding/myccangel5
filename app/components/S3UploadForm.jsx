@@ -91,7 +91,7 @@ setUploading(false);
 <form onSubmit={handleSubmit}>
 <input type="file" accept="image/*" onChange={handleFileChange}/>
 
-<button type="submit" >
+<button type="submit" className="bg-white">
 {uploading? "Uploading...": "Upload"}
 
 </button>
