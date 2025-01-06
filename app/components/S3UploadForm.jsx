@@ -14,14 +14,16 @@ const [uploading,setUploading]=useState(false);
 async function uploadFileToS3(file, fileName) {
    // console.log( "Route");
    const s3Client= new S3Client({
-    region:"eu-north-1",//process.env.AWS_REGION,
+    region:"eu-north-1",
     credentials:{
         accessKeyId: process.env.AWS_ACCESS_KEY_ID,
         secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
     }
 })
+console.log(" S3 call");
+console.log(process.env.AWS_ACCESS_KEY_ID) 
     const fileBuffer= file;
-    console.log(" S3 call");
+   
 
     console.log(fileName);
     const params={
