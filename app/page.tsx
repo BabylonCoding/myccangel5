@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Home } from "./components/Home";
 import { Profilepage } from "./components/Profilepage";
 import {useSideContext} from "./components/context/side-context";
@@ -24,6 +24,8 @@ const client = generateClient<Schema>();
     cN: string
   }
  }) => {
+      const [profiles, setProfiles] = useState<Array<Schema["Profile"]["type"]>>([]);
+  
       const {layout,setLayout}=useSideContext();
   const {userName,setUserName}=useSideContext();
   const {userId,setUserId}=useSideContext();
@@ -49,8 +51,17 @@ const client = generateClient<Schema>();
     ///////////////////////////////////////////
     const listProfile=()=>{
       client.models.Profile.observeQuery().subscribe({
-        next: (data_1) =>   data_1.items.length == 0?
-    setLayout(false): setLayout(true),
+        next: (data_1) => { if (data_1.items.length == 0)
+    setLayout(false);
+    else {
+      setProfiles([...data_1.items]);
+       if(profiles[0].status=="complete")
+        setLayout(true);
+       else setLayout(false);
+    }
+   
+
+        }
       })
      
     }

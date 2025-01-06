@@ -129,7 +129,7 @@ export const Profileform = () => {
          address2:Add2,
          tel:Tel,
          city:City,
-         country:Country
+         country:Country,
         });
       }
 

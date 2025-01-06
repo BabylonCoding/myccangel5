@@ -66,7 +66,8 @@ else  if(cat1=="not IBD")
      tel:"",
      city:"",
      country:"",
-     category: Category
+     category: Category,
+     status:"category"
     });
     
   }

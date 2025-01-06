@@ -22,6 +22,7 @@ const schema = a.schema({
   city: a.string(),
   country: a.string(),
   category: a.string(),
+  status: a.string(),
 })
 .authorization((allow) => [allow.owner()]),
 
