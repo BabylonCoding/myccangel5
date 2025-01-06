@@ -31,7 +31,7 @@ export default function SideContextProvider({children}: {
     children: React.ReactNode;
   }){
     
-    const [layout, setLayout]=useState(true);
+    const [layout, setLayout]=useState(false);
     const [profileEiditForm, setprofileEiditForm]=useState(false);
     const [side, setSide]=useState(false);
     const [Signed, setSigned]=useState(false);
