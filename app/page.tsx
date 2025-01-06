@@ -55,7 +55,7 @@ const client = generateClient<Schema>();
     setLayout(false);
     else {
       setProfiles([...data_1.items]);
-       if(profiles[0].status=="complete")
+       if(profiles[0].status=="complete" || profiles[0].category=="NontIBD" )
         setLayout(true);
        else setLayout(false);
     }

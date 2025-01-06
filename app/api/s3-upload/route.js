@@ -47,7 +47,7 @@ if(!file){
 
 
 const buffer = Buffer.from (await file.arrayBuffer());
-//api const fileName= await uploadFileToS3(buffer, file.name);
+ const fileName= await uploadFileToS3(buffer, file.name);
 
 
 return NextResponse.json({success: true, fileName});
