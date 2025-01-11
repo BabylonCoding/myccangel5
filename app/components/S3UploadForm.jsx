@@ -2,7 +2,7 @@
 import { useState } from "react";
 import {S3Client, PutObjectCommand, GetObjectCommand} from "@aws-sdk/client-s3"
  import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-
+import { Link } from "@aws-amplify/ui-react";
   const  S3UploadForm=()=>{
     const [url,setUrl]=useState("");
 
