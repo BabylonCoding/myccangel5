@@ -104,7 +104,7 @@ const handleSubmit= async (e)=>{
 //       const buffer = Buffer.from (await file.arrayBuffer());
 //       const response2= await uploadFileToS3(buffer, file.name);
 ////////////
- today
+ 
 const response=await fetch('api/s3-upload',{
     method: "POST",
     body: formData,
@@ -113,7 +113,7 @@ const response=await fetch('api/s3-upload',{
 response.json()
 .then(async (data) => {
  //setState1(pos)
-
+setUrl(data);
 console.log( " response 123");
 console.log( data);
 })
@@ -131,8 +131,8 @@ setUploading(false);
 
 }
 console.log(" S3 call");
-console.log(process.env.AWS_ACCESS_KEY_ID) 
-console.log( process.env.DB_HOST) 
+//console.log(process.env.AWS_ACCESS_KEY_ID) 
+//console.log( process.env.DB_HOST) 
    
 return(
         <>
@@ -146,7 +146,7 @@ return(
 </button>
 
 </form>
-
+<Link>{url}</Link>
 
         </>
     )
