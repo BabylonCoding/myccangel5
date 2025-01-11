@@ -1,0 +1,10 @@
+.page-container {
+    background-image: url('../../public/images/greenbkg-contactus.png'); /* Replace with your image URL */
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
