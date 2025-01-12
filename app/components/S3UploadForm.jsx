@@ -2,7 +2,7 @@
 import { useState } from "react";
 import {S3Client, PutObjectCommand, GetObjectCommand} from "@aws-sdk/client-s3"
  import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-import { Link } from "@aws-amplify/ui-react";
+
   const  S3UploadForm=()=>{
     const [url,setUrl]=useState("");
 
@@ -113,7 +113,7 @@ const response=await fetch('api/s3-upload',{
 response.json()
 .then(async (data) => {
  //setState1(pos)
-setUrl(data);
+
 console.log( " response 123");
 console.log( data);
 })
@@ -131,8 +131,8 @@ setUploading(false);
 
 }
 console.log(" S3 call");
-//console.log(process.env.AWS_ACCESS_KEY_ID) 
-//console.log( process.env.DB_HOST) 
+// console.log(process.env.AWS_ACCESS_KEY_ID) 
+// console.log( process.env.DB_HOST) 
    
 return(
         <>
@@ -146,7 +146,7 @@ return(
 </button>
 
 </form>
-<Link>{url}</Link>
+
 
         </>
     )
