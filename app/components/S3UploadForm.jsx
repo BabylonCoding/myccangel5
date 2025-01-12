@@ -4,8 +4,6 @@ import {S3Client, PutObjectCommand, GetObjectCommand} from "@aws-sdk/client-s3"
  import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
   const  S3UploadForm=()=>{
-    const [url,setUrl]=useState("");
-
 //const UploadForm () =>{
 const [file,setFile]=useState(null);
 const [uploading,setUploading]=useState(false);
@@ -30,50 +28,52 @@ const [state1, setState1] = useState([]);
     */
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/*
 
 async function uploadFileToS3(file, fileName) {
-   // console.log( "Route");
-   const s3Client= new S3Client({
-    region:  "eu-north-1",
-    credentials:{
-        accessKeyId: process.env.AWS_ACCESS_KEY_ID, // .AWS_ACCESS_KEY_ID, // process.env.AWS_ACCESS_KEY_ID,
-        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,// process.env.AWS_SECRET_ACCESS_KEY
-    }
-})
-console.log(" S3 call");
-console.log(process.env.AWS_ACCESS_KEY_ID) 
-console.log(process.env.REACT_APP_AWS_SECRET_ACCESS_KEY) 
-    const fileBuffer= file;
-   
+    console.log( "Route");
 
-    console.log(fileName);
+    const fileBuffer= file;
+  //  console.log(fileName);
     const params={
-        Bucket: "myccangel-storage",//process.env.AWS_BUCKET_NAME,
+        Bucket:  "myccangel-storage", //process.env.AWS_BUCKET_NAME,
         Key: `${fileName}-${Date.now()}`,
         Body: fileBuffer,
         ContentType: "image/jpg"
 
     }
-    const command= new PutObjectCommand(params);
-    const response1=await s3Client.send(command);
+    /////////////////////////////
+    fetch('https://9i1lhhmu11.execute-api.eu-north-1.amazonaws.com/dev')
+    .then((response) => response.json())
+    .then(async (data) => {
+    //    console.log("data Lambda")
+     //   console.log(data["accessKeyId"])
+     //   console.log(data["secretAccessKey"])
+///////////////////////////
+const s3Client= new S3Client({
+    region:  "eu-north-1",
+    credentials:{
+        accessKeyId: data.accessKeyId,  // ,// process.env.AWS_ACCESS_KEY_ID, // .AWS_ACCESS_KEY_ID, // process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: data.secretAccessKey, //process.env.AWS_SECRET_ACCESS_KEY,// process.env.AWS_SECRET_ACCESS_KEY
 
+    }
+})
 
-    const command_object = new GetObjectCommand(params);
-   let url = await getSignedUrl(s3Client, command_object);
-
-   // let response = await axios({
-   //     url: url,
-   //     method: 'GET',
-   //     responseType: 'arraybuffer'
-   // });
-
-    console.log(command_object)
-
-    console.log("S# Response");console.log(url);
-    return response1;
+const command= new PutObjectCommand(params);
+const data1= await s3Client.send(command);
+const command_object = new GetObjectCommand(params);
+let url = await getSignedUrl(s3Client, command_object);
+ return url;
+     // setData(data);
+    //  setLoading(false);
+    });
+/////////
+    ///////////////////////////////////
+   
 }
-*/
+
+
+
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -101,10 +101,10 @@ const handleSubmit= async (e)=>{
         console.log(      formData);
 
         ///////////
-//       const buffer = Buffer.from (await file.arrayBuffer());
-//       const response2= await uploadFileToS3(buffer, file.name);
+       const buffer = Buffer.from (await file.arrayBuffer());
+       const response2= await uploadFileToS3(buffer, file.name);
 ////////////
- 
+/* today
 const response=await fetch('api/s3-upload',{
     method: "POST",
     body: formData,
@@ -117,7 +117,7 @@ response.json()
 console.log( " response 123");
 console.log( data);
 })
-
+*/
 //console.log( response);
 
 //const data=await response.json();
@@ -131,8 +131,8 @@ setUploading(false);
 
 }
 console.log(" S3 call");
-// console.log(process.env.AWS_ACCESS_KEY_ID) 
-// console.log( process.env.DB_HOST) 
+console.log(process.env.AWS_ACCESS_KEY_ID) 
+console.log( process.env.DB_HOST) 
    
 return(
         <>
