@@ -7,7 +7,7 @@ import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
 
 async function uploadFileToS3(file, fileName) {
-    console.log( "Route");
+  //  console.log( "Route");
 
     const fileBuffer= file;
   //  console.log(fileName);
