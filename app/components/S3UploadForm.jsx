@@ -62,6 +62,8 @@ const command= new PutObjectCommand(params);
 const data1= await s3Client.send(command);
 const command_object = new GetObjectCommand(params);
 let url = await getSignedUrl(s3Client, command_object);
+console.log("URL ZOHER");
+console.log(url);
  return url;
      // setData(data);
     //  setLoading(false);
