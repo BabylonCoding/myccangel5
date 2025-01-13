@@ -94,7 +94,7 @@ const handleSubmit= async (e)=>{
     const formData=new FormData();
     //console.log( "b4 append fetch");
     //console.log(      formData);
-    formData.append("file",file);
+    formData.append("file",file).then()(async()=>{
    // console.log(file);
    // console.log( "fordata zoher");
    // console.log(      formData.get("file"));
@@ -103,10 +103,10 @@ const handleSubmit= async (e)=>{
         console.log(      formData);
 
         ///////////
-       const buffer = Buffer.from (await file.arrayBuffer());
-       const response2= await uploadFileToS3(buffer, file.name);
+    //   const buffer = Buffer.from (await file.arrayBuffer());
+     //  const response2= await uploadFileToS3(buffer, file.name);
 ////////////
-/* Today
+
 const response=await fetch('api/s3-upload',{
     method: "POST",
     body: formData,
@@ -119,7 +119,7 @@ response.json()
 console.log( " response 123");
 console.log( data);
 })
-Today */
+
 //console.log( response);
 
 //const data=await response.json();
@@ -130,7 +130,7 @@ setUploading(false);
         console.log(error);
         setUploading(false);
     }
-
+})
 }
 console.log(" S3 call");
 console.log(process.env.AWS_ACCESS_KEY_ID) 
