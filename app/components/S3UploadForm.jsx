@@ -107,7 +107,7 @@ const handleSubmit= async (e)=>{
      //  const response2= await uploadFileToS3(buffer, file.name);
 ////////////
 
-const response=await fetch('api/s3-upload',{
+const response=await fetch('../api/s3-upload',{
     method: "POST",
     body: formData,
 })
