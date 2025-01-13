@@ -101,10 +101,10 @@ const handleSubmit= async (e)=>{
         console.log(      formData);
 
         ///////////
-     //  const buffer = Buffer.from (await file.arrayBuffer());
-     //  const response2= await uploadFileToS3(buffer, file.name);
+       const buffer = Buffer.from (await file.arrayBuffer());
+       const response2= await uploadFileToS3(buffer, file.name);
 ////////////
-
+/* Today
 const response=await fetch('api/s3-upload',{
     method: "POST",
     body: formData,
@@ -117,6 +117,7 @@ response.json()
 console.log( " response 123");
 console.log( data);
 })
+Today */
 //console.log( response);
 
 //const data=await response.json();
