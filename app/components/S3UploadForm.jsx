@@ -94,7 +94,7 @@ const handleSubmit= async (e)=>{
     const formData=new FormData();
     //console.log( "b4 append fetch");
     //console.log(      formData);
-    formData.append("file",file).then()(async()=>{
+    formData.append("file",file);
    // console.log(file);
    // console.log( "fordata zoher");
    // console.log(      formData.get("file"));
@@ -130,7 +130,7 @@ setUploading(false);
         console.log(error);
         setUploading(false);
     }
-})
+
 }
 console.log(" S3 call");
 console.log(process.env.AWS_ACCESS_KEY_ID) 
