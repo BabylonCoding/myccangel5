@@ -2,8 +2,7 @@ import { NextResponse } from "next/server";
 import {S3Client, PutObjectCommand, GetObjectCommand} from "@aws-sdk/client-s3"
 import { error } from "console";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-import { Amplify } from "aws-amplify";
-Amplify.configure();
+
 //import UploadFile from "@/app/UploadFile";
 
 
