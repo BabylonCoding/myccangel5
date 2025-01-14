@@ -2,6 +2,8 @@
 import { useState } from "react";
 import {S3Client, PutObjectCommand, GetObjectCommand} from "@aws-sdk/client-s3"
  import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+ import { Amplify } from "aws-amplify";
+ Amplify.configure(outputs);
 
   const  S3UploadForm=()=>{
 //const UploadForm () =>{
