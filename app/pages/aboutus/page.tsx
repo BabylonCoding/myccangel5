@@ -152,7 +152,7 @@ const page = () => {
         <div className='innerCard '>
           <img src={"/images/zoherweb1.png"} alt="Zoher"/>
           <h4>Zoher Abbas</h4>
-          <p>Senior Full-Stack Developer</p>
+          <p>Co-Founder & Senior Full-Stack Developer</p>
         </div>
 
        
