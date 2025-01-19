@@ -49,9 +49,9 @@ async function uploadFileToS3(file, fileName) {
     fetch('https://9i1lhhmu11.execute-api.eu-north-1.amazonaws.com/dev')
     .then((response) => response.json())
     .then(async (data) => {
-        console.log("data Lambda")
-        console.log(data["accessKeyId"])
-        console.log(data["secretAccessKey"])
+    //    console.log("data Lambda")
+   //     console.log(data["accessKeyId"])
+    //    console.log(data["secretAccessKey"])
 ///////////////////////////
 const s3Client= new S3Client({
     region:  "eu-north-1",

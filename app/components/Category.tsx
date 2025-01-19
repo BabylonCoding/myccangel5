@@ -23,7 +23,7 @@ import { Amplify } from "aws-amplify";
 import outputs from "@/amplify_outputs.json";
 import "@aws-amplify/ui-react/styles.css";
 import { Profileform } from './Profileform';
-import S3UploadForm from './S3UploadForm';
+import S3UploadForm from './S3UploadForm';// './S3UploadForm';
 
 
 Amplify.configure(outputs);
