@@ -1,0 +1,72 @@
+.ourGoal {
+  padding: 20px;
+}
+.ourGoal h2 {
+  font-size: 2rem;
+  text-align: center;
+  color: purple;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+.outerDiv {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.innerDiv {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+.innerDiv1 {
+  margin-left: 8%;
+}
+.innerDiv2 {
+  margin-bottom: 20px;
+}
+.imageSection img {
+  width: 55%;
+  margin-left: 20%;
+}
+.imageSection {
+  width: 50%;
+}
+.innerDiv2 h3 {
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #800080;
+}
+.innerDiv2 p {
+  margin-bottom: 20px;
+}
+
+.ourTeam h2 {
+  font-size: 2rem;
+  text-align: center;
+  color: purple;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+.ourTeam {
+    padding: 40px;
+}
+.ourTeam_card {
+    display: flex;
+    justify-content: space-around;
+}
+.innerCard {
+    box-shadow: 0 0 20px 0 grey;
+    text-align: center;
+    padding: 20px;
+    width: 200px;
+   height: 300px;
+   border-radius: 10px;
+  margin: 10px;
+    
+
+}
+.innerCard img {
+    background: #d7d7d7;
+  
+}
