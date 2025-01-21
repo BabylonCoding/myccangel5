@@ -24,6 +24,8 @@ import outputs from "@/amplify_outputs.json";
 import "@aws-amplify/ui-react/styles.css";
 import { Profileform } from './Profileform';
 import S3UploadForm from './S3UploadForm';// './S3UploadForm';
+import UpLtest from './UpLtest';// './S3UploadForm';
+
 
 
 Amplify.configure(outputs);
@@ -148,7 +150,7 @@ else  if(cat1=="not IBD")
     </div> 
 }
     {comp=="partners"&&  <Profileform/>}
-    {comp=="patent"&&  <S3UploadForm/>}
+    {comp=="patent"&&  <UpLtest/>}
     </div>
   );
 }
