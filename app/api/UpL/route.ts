@@ -7,7 +7,7 @@ export async function POST(request: Request) {
   const url="url Zoher"
   const fields="fields Zoher"
 
-  return Response.json({ url, fields })
+  return Response.json({ filename, fields })
 
 /*
   try {

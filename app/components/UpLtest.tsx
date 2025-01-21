@@ -14,6 +14,10 @@ import { Amplify } from "aws-amplify";
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    if (!file) {
+      alert('Please select a file to upload.')
+      return
+    }
     setUploading(true)
 
     const response = await fetch(
@@ -23,13 +27,13 @@ import { Amplify } from "aws-amplify";
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ filename: "file.name", contentType: "file.type"}),
+        body: JSON.stringify({ filename: "Zoherfile.name", contentType: "file.type"}),
       }
     )
     console.log('Zoher API response:', response)
     if (response.ok) {
-      const { url, fields } = await response.json()
-      alert( url)
+      const { filename, fields } = await response.json()
+      alert( filename)
     } else {
       console.error('S3 Upload Error:', response)
       alert('Upload failed.')
