@@ -4,10 +4,30 @@ import { v4 as uuidv4 } from 'uuid'
 
 export async function POST(request: Request) {
   const { filename, contentType } = await request.json()
-  const url="url Zoher"
-  const fields="fields Zoher"
+ 
+ /////////////////////////////
+const response=await fetch('https://9i1lhhmu11.execute-api.eu-north-1.amazonaws.com/dev') 
+// .then((response) => response.json())
+// .then(async (data) => {
+ //    console.log("data Lambda")
+  //   console.log(data["accessKeyId"])
+  //   console.log(data["secretAccessKey"])
+///////////////////////////
+const {accessKeyId,secretAccessKey}=await response.json()
+const k1=accessKeyId;
+const k2=secretAccessKey;
+return Response.json({ k1, k2 })
+  // setData(data);
+ //  setLoading(false);
+ 
+/////////
 
-  return Response.json({ filename, fields })
+
+
+
+
+
+ 
 
 /*
   try {

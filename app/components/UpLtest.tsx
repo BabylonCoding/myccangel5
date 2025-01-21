@@ -12,6 +12,29 @@ import { Amplify } from "aws-amplify";
   const [file, setFile] = useState<File | null>(null)
   const [uploading, setUploading] = useState(false)
 
+  const handleSubmit3 = async (e: React.FormEvent<HTMLFormElement>) => {
+
+   /////////////////////////////
+   e.preventDefault()
+
+ fetch('https://9i1lhhmu11.execute-api.eu-north-1.amazonaws.com/dev')
+ .then((response) => response.json())
+ .then(async (data) => {
+ //    console.log("data Lambda")
+  //   console.log(data["accessKeyId"])
+  //   console.log(data["secretAccessKey"])
+///////////////////////////
+
+const k1=data.accessKeyId;
+const k2=data.secretAccessKey;
+alert( k1 +"::::"+ k2);
+//return Response.json({ k1, k2 })
+  // setData(data);
+ //  setLoading(false);
+ });
+/////////
+  }
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (!file) {
@@ -20,7 +43,7 @@ import { Amplify } from "aws-amplify";
     }
     setUploading(true)
 
-    const response = await fetch(
+     fetch(
       '/api/UpL',
       {
         method: 'POST',
@@ -29,16 +52,17 @@ import { Amplify } from "aws-amplify";
         },
         body: JSON.stringify({ filename: "Zoherfile.name", contentType: "file.type"}),
       }
-    )
-    console.log('Zoher API response:', response)
+    ) 
+    .then(async (response) => {
+  //  console.log('Zoher API response:', response)
     if (response.ok) {
-      const { filename, fields } = await response.json()
-      alert( filename)
+      const { k1, k2 } = await response.json()
+      alert( k1 +"::::"+ k2)
     } else {
-      console.error('S3 Upload Error:', response)
+     // console.error('S3 Upload Error:', response)
       alert('Upload failed.')
     }
-
+  })
   }
   const handleSubmit2 = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
