@@ -28,7 +28,8 @@ import { Amplify } from "aws-amplify";
     )
     console.log('Zoher API response:', response)
     if (response.ok) {
-      alert( response)
+      const { url, fields } = await response.json()
+      alert( url)
     } else {
       console.error('S3 Upload Error:', response)
       alert('Upload failed.')
