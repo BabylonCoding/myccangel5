@@ -107,10 +107,11 @@ const buffer = Buffer.from (await  file.arrayBuffer());
         })
         const command= new PutObjectCommand(params);
  const data1= await s3Client.send(command);
-
+ const command_object = new GetObjectCommand(params);
+ let url = await getSignedUrl(s3Client, command_object);
         const k1=accessKeyId;
         const k2=secretAccessKey;
-           return Response.json({success: true,  k1, k2});
+           return Response.json({success: true,  k1, k2, url});
 
 
     }catch(error){

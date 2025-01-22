@@ -117,8 +117,8 @@ const handleSubmit= async (e)=>{
 }).then(async (response) => {
     //  console.log('Zoher API response:', response)
       if (response.ok) {
-        const { k1,k2 } = await response.json()
-        alert(  "::::"+ k2)
+        const { k1,k2, url } = await response.json()
+        alert(  url+"::::"+ k2)
       } else {
        // console.error('S3 Upload Error:', response)
         alert('Upload failed.')
