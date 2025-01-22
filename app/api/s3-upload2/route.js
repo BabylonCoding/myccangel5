@@ -70,10 +70,44 @@ return Response.json({success: true,  data2});
 
 
 export async function POST(request) {
-    
+    const formData = await request.formData();
+const file=formData.get("file");
+//console.log( {fileName});
+//return NextResponse.json({f:file.name});
+
+if(!file){
+   
+    return  NextResponse.json({error: "Error upploading file"},{status:400});//NextResponse.json({ msg: "Hello API"});
+
+}
+
+
+const buffer = Buffer.from (await  file.arrayBuffer());
+ //const dataR= await uploadFileToS3(buffer, file.name);
+ const params={
+    Bucket:  "myccangel-storage", //process.env.AWS_BUCKET_NAME,
+    Key: `${file.name}-${Date.now()}`,
+    Body: buffer,
+    ContentType: "image/jpg"
+}
+
     try{
+
+
         const response=await fetch('https://9i1lhhmu11.execute-api.eu-north-1.amazonaws.com/dev') 
         const {accessKeyId,secretAccessKey}=await response.json()
+
+        const s3Client= new S3Client({
+            region:  "eu-north-1",
+            credentials:{
+                accessKeyId: accessKeyId,  // ,// process.env.AWS_ACCESS_KEY_ID, // .AWS_ACCESS_KEY_ID, // process.env.AWS_ACCESS_KEY_ID,
+                secretAccessKey: secretAccessKey, //process.env.AWS_SECRET_ACCESS_KEY,// process.env.AWS_SECRET_ACCESS_KEY
+        
+            }
+        })
+        const command= new PutObjectCommand(params);
+ const data1= await s3Client.send(command);
+
         const k1=accessKeyId;
         const k2=secretAccessKey;
            return Response.json({success: true,  k1, k2});
