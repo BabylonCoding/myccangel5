@@ -20,7 +20,7 @@ export async function POST(request: Request) {
   }
   
   
-  const buffer = Buffer.from (await  file.arrayBuffer());
+ // const buffer = Buffer.from (await  file.arrayBuffer());
   //// const dataR= await uploadFileToS3(buffer, file.name);
   
   
@@ -28,7 +28,7 @@ export async function POST(request: Request) {
  const params={
   Bucket:  "myccangel-storage", //process.env.AWS_BUCKET_NAME,
   Key:  uuidv4(), //`${fileName}-${Date.now()}`,
-  Body: fileBuffer,
+  // Body: fileBuffer,
   ContentType: "image/jpg"
 
 }
