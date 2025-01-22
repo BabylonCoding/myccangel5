@@ -56,7 +56,10 @@ const command= new PutObjectCommand(params);
 const data1= await s3Client.send(command);
 const command_object = new GetObjectCommand(params);
 let url = await getSignedUrl(s3Client, command_object);
- return url;
+const data2="zoher";
+return Response.json({success: true,  data2});
+
+ //return url;
      // setData(data);
     //  setLoading(false);
     });
@@ -82,11 +85,11 @@ if(!file){
 }
 
 
-const buffer = Buffer.from (await file.arrayBuffer());
+const buffer = Buffer.from (await  file.arrayBuffer());
  const dataR= await uploadFileToS3(buffer, file.name);
 
-
-return NextResponse.json({success: true, data1: dataR});
+ const data22="zoher";
+return Response.json({success: true, data1: data22});
 
     }catch(error){
         return  NextResponse.json({error: "Error upploading file"});//NextResponse.json({ msg: "Hello API"});

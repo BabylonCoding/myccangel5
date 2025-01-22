@@ -111,18 +111,19 @@ const handleSubmit= async (e)=>{
      //  const response2= await uploadFileToS3(buffer, file.name);
 ////////////
 
-const response=await fetch('https://master8.d16vsmgz7u984.amplifyapp.com/api/s3-upload',{
+ fetch( '/api/s3-upload',{
     method: "POST",
     body: formData,
-})
-//const pos = await response.json()
-response.json()
-.then(async (data) => {
- //setState1(pos)
-
-console.log( " response 123");
-console.log( data);
-})
+}).then(async (response) => {
+    //  console.log('Zoher API response:', response)
+      if (response.ok) {
+        const { data2 } = await response.json()
+        alert(  "::::"+ data2)
+      } else {
+       // console.error('S3 Upload Error:', response)
+        alert('Upload failed.')
+      }
+    })
 
 //console.log( response);
 

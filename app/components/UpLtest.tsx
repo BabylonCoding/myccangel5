@@ -1,8 +1,10 @@
-'use client'
-
-import { useState } from 'react'
+"use client";
+import { SetStateAction, useState } from "react";
+import {S3Client, PutObjectCommand, GetObjectCommand} from "@aws-sdk/client-s3"
+ import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { Amplify } from "aws-amplify";
  import outputs from "@/amplify_outputs.json";
+import { form } from "@nextui-org/react";
 
  Amplify.configure(outputs);
 
@@ -42,15 +44,21 @@ alert( k1 +"::::"+ k2);
       return
     }
     setUploading(true)
+    const formData=new FormData();
+    //console.log( "b4 append fetch");
+    //console.log(      formData);
+    formData.append("file",file);
+try{
 
      fetch(
-      '/api/UpL',
+      '/api/UpLFile',
       {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ filename: "Zoherfile.name", contentType: "file.type"}),
+          body: formData,
+
+     //   headers: { 'Content-Type': 'application/json',},
+     //   body: JSON.stringify({ filename: "Zoherfile.name", contentType: "file.type"}),
+     
       }
     ) 
     .then(async (response) => {
@@ -63,6 +71,12 @@ alert( k1 +"::::"+ k2);
       alert('Upload failed.')
     }
   })
+  setUploading(false);
+    }
+    catch(error){
+        console.log(error);
+        setUploading(false);
+    }
   }
   const handleSubmit2 = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -111,6 +125,12 @@ alert( k1 +"::::"+ k2);
 
     setUploading(false)
   }
+
+  const handleFileChange=(e: { target: { files: SetStateAction<File | null>[]; }; })=>{
+    console.log( "handlechange");
+
+    setFile(e.target.files[0]);
+}
 
   return (
     <main>

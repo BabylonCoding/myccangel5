@@ -150,7 +150,7 @@ else  if(cat1=="not IBD")
     </div> 
 }
     {comp=="partners"&&  <Profileform/>}
-    {comp=="patent"&&  <UpLtest/>}
+    {comp=="patent"&&  <S3UploadForm/>}
     </div>
   );
 }
