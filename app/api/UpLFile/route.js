@@ -62,7 +62,7 @@ export async function POST(request) {
   }
   
   
-  const buffer = Buffer.from (await  file.arrayBuffer());
+ // const buffer = Buffer.from (await  file.arrayBuffer());
  //z const formData = await request.formData();
 //z  const file=formData.get("file");
   //console.log( {fileName});
