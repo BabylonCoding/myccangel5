@@ -111,14 +111,14 @@ const handleSubmit= async (e)=>{
      //  const response2= await uploadFileToS3(buffer, file.name);
 ////////////
 
- fetch( '/api/s3-upload',{
+ fetch( '/api/s3-upload2',{
     method: "POST",
     body: formData,
 }).then(async (response) => {
     //  console.log('Zoher API response:', response)
       if (response.ok) {
-        const { data2 } = await response.json()
-        alert(  "::::"+ data2)
+        const { k1,k2 } = await response.json()
+        alert(  "::::"+ k2)
       } else {
        // console.error('S3 Upload Error:', response)
         alert('Upload failed.')
